@@ -1,0 +1,71 @@
+<ion-content fullscreen="true">
+  <div id="content">
+    <!-- Perfil y menú -->
+    <ion-menu side="end" contentId="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <div class="perfil-container">
+            <img [src]="imgPerfil" alt="Imagen de perfil" class="img-perfil" *ngIf="imgPerfil">
+            <div class="perfil-info">
+              <h3>{{ nombreCompleto }}</h3>
+              <p>{{ perfil }}</p>
+            </div>
+          </div>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-list>
+          <ion-item (click)="irACambiarContrasena()">
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-label>Perfil</ion-label>
+          </ion-item>
+          <ion-item (click)="cerrarSesion()" class="danger-item">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Cerrar sesión</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <!-- Encabezado -->
+    <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Bienvenido, {{ nombre }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+    </div>
+
+    <!-- Botón fijo para crear un curso -->
+    <div class="button-fixed">
+      <ion-button expand="block" (click)="crearCurso()">Crear un nuevo curso</ion-button>
+    </div>
+
+    <!-- Contenedor de las tarjetas -->
+    <div id="scrollable-container">
+      <ion-card *ngFor="let curso of cursos" class="custom-card">
+        <div class="row">
+          <div class="col-img">
+            <img [src]="curso.imagen" alt="Imagen del curso" class="img-fluid rounded-start" />
+          </div>
+          <div class="col-content">
+            <div class="card-body">
+              <h5 class="card-title">{{ curso.nombre }}</h5>
+              <p class="card-text">{{ curso.descripcion }}</p>
+              <div class="user-info">
+                <p><strong>Profesor:</strong> {{ curso.usuario.nombre_completo }}</p>
+                <p><strong>Correo:</strong> {{ curso.usuario.correo }}</p>
+              </div>
+              <ion-button expand="block" (click)="verDetallesCurso(curso)">
+                Ver más
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

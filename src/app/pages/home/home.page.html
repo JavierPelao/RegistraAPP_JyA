@@ -1,0 +1,33 @@
+<ion-content fullscreen="true">
+  <div id="content">
+    <ion-card id="container-home-cont">
+      <ion-card-header>
+        <ion-card-title>RegistrAPP</ion-card-title>
+        <ion-card-title>Inicio De Sesión</ion-card-title>
+      </ion-card-header>
+
+      <ion-item>
+        <ion-input 
+        [counter]="true" 
+        label="Nombre de Usuario" 
+        label-placement="floating"
+        type="text" 
+        placeholder="Usuario" 
+        rrorText="Nombre de usuario incorrecto"
+        maxlength="35" 
+        minlength="5" s
+        [(ngModel)]="correo"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input [counter]="true" label="Contraseña" label-placement="floating"
+          type="password" placeholder="********" errorText="Contraseña No Valida"
+          minlength="6" maxlength="20" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button expand="block" (click)="login()">Iniciar Sesión</ion-button>
+      <ion-button expand="block" (click)="recoveryPassword()">Recuperar Contraseña</ion-button>
+
+    </ion-card>
+  </div>
+</ion-content>
