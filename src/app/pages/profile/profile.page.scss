@@ -1,0 +1,73 @@
+
+ion-content {
+    --background: #ffffff;
+    color: #000000; /* Color negro para el texto */
+  }
+  
+  .perfil-container {
+    display: flex;
+    align-items: center;
+    padding: 5px; /* Reducir el padding */
+    margin-bottom: 5px; /* Reducir el espacio entre el contenedor de perfil y otros elementos */
+  }
+  
+  .img-perfil {
+    width: 60px; /* Reducir el tamaño de la imagen */
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px; /* Reducir espacio entre la imagen y el texto */
+  }
+  
+  .perfil-info h3 {
+    margin: 0;
+    font-size: 18px; /* Reducir el tamaño de la fuente */
+    color: #000000; /* Letras en negro */
+  }
+  
+  .perfil-info p {
+    margin: 0;
+    font-size: 14px; /* Reducir el tamaño de la fuente */
+    color: #000000; /* Letras en negro */
+  }
+  
+  ion-card {
+    margin: 5px; /* Reducir el margen entre las tarjetas */
+    padding: 5px; /* Reducir el padding interno de las tarjetas */
+  }
+  
+  ion-card-header {
+    background-color: #f8f9fa; /* Fondo claro */
+    padding: 5px; /* Reducir el padding */
+    margin-bottom: 5px; /* Reducir la separación inferior */
+  }
+  
+  ion-card-title {
+    color: #000000; /* Letras en negro */
+    font-size: 18px; /* Reducir el tamaño de la fuente */
+  }
+  
+  ion-card-content {
+    margin: 5px; /* Reducir el margen alrededor del contenido */
+  }
+  
+  ion-card-content p {
+    font-size: 14px; /* Reducir el tamaño de la fuente */
+    color: #000000; /* Letras en negro */
+    margin: 2px 0; /* Reducir el margen entre párrafos */
+  }
+  
+  ion-item {
+    --background: #ffffff;
+    color: #000000; /* Letras en negro */
+    padding: 5px; /* Reducir el padding */
+    margin-bottom: 5px; /* Reducir espacio entre los items */
+  }
+  
+  ion-button {
+    --background: #007bff; /* Color de fondo del botón */
+    color: #ffffff; /* Letras blancas */
+    padding: 8px; /* Reducir el padding */
+    margin-top: 5px; /* Reducir espacio superior */
+    margin-bottom: 5px; /* Reducir espacio inferior */
+  }
+  

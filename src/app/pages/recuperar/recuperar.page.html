@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true">
+  <div id="content">
+    <ion-card id="container-home-cont">
+      <ion-card-header>
+        <ion-card-title>Recuperación de Contraseña</ion-card-title>
+      </ion-card-header>
+
+      <ion-item>
+        <ion-input
+          [counter]="true"
+          label="Correo Electrónico"
+          label-placement="floating"
+          type="email"
+          placeholder="example@example.com"
+          maxlength="35"
+          minlength="5"
+          [(ngModel)]="correo">
+        </ion-input>
+      </ion-item>
+
+      <ion-button expand="block" id="btn-recuperar" (click)="recuperarPassword()">
+        Recuperar
+      </ion-button>
+    </ion-card>
+  </div>
+</ion-content>

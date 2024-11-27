@@ -1,0 +1,72 @@
+#content {
+  background-image: url(../../../../assets/img/bg-app.jpg);
+  font: sans-serif;
+  height: 100vh; /* Usa vh en lugar de % */
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+}
+
+
+#container-home-cont {
+  --background: #d7d8d448;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  padding: 15px;
+  max-width: 350px;
+  min-width: 80%;
+  height: 100vh; /* Ajusta la altura según el contenido */
+  max-height: 470px;
+  margin: auto; /* Centra horizontal y verticalmente en flexbox */
+  border-radius: 20px;
+  position: relative; /* Cambiado a relative */
+  background-size: cover;
+}
+
+ion-toolbar {
+  --background: #4C4745; /* Fondo del toolbar */
+  --color: white;         /* Color del texto en el toolbar */
+}
+
+ion-title {
+  color: hsl(0, 0%, 100%);
+  font-size: 35px;
+  text-align: center;
+
+}
+
+ion-card-title {
+  color: #ffffff;
+  font-size: 35px;
+  text-align: center;
+}
+
+ion-button {
+  --background: #232423; // Color de fondo de los botones
+  --color: #ffffff; // Color del texto de los botones
+  font: 1em sans-serif;
+  --border-color: #00000000; // Color del borde de los inputs
+  --border-radius: 10px; // Radio de los bordes de los inputs
+  --padding-start: 15px; // Espaciado interno del input
+  --padding-end: 15px; // Espaciado interno del input
+  --padding-top: 5px; // Espaciado interno del input
+  --padding-bottom: 10px; // Espaciado interno del in
+
+}
+
+ion-input {
+  --background: #232423; // Color de fondo de los inputs
+  --color: #ffffff; // Color del texto de los inputs
+  --border-color: #00000000; // Color del borde de los inputs
+  --border-radius: 10px; // Radio de los bordes de los inputs
+  --padding-start: 15px; // Espaciado interno del input
+  --padding-end: 15px; // Espaciado interno del input
+  --padding-top: 5px; // Espaciado interno del input
+  --padding-bottom: 10px; // Espaciado interno del input
+}
+
+
+
