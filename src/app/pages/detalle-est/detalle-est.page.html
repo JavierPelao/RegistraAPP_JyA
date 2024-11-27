@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ curso?.nombre || 'Detalle del Curso' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Información del curso -->
+  <ion-card *ngIf="curso">
+    <ion-card-header>
+      <img [src]="curso.imagen" alt="Imagen del curso" />
+      <ion-card-title>{{ curso.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ curso.descripcion }}</p>
+      <div class="user-info">
+        <p><strong>Profesor:</strong> {{ curso.usuario?.nombre_completo }}</p>
+        <p><strong>Correo:</strong> {{ curso.usuario?.correo }}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botón para reportar inasistencia -->
+  <ion-button expand="block" color="danger" (click)="abrirAlertaReportarInasistencia(curso.id)">
+    Reportar Inasistencia
+  </ion-button>
+
+  <!-- Lista de anuncios del curso -->
+  <ion-list *ngIf="anuncios.length > 0">
+    <ion-list-header>
+      <ion-label>Anuncios del Curso</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let anuncio of anuncios">
+      <ion-label>
+        <h2>{{ anuncio.titulo }}</h2>
+        <p>{{ anuncio.mensaje }}</p>
+      </ion-label>
+      <ion-button slot="end" color="tertiary" (click)="verDetallesAnuncio(anuncio)">Ver</ion-button>
+    </ion-item>
+  </ion-list>
+  <p *ngIf="anuncios.length === 0" class="no-data-message">No hay anuncios disponibles.</p>
+
+  <!-- Lista de inasistencias del curso -->
+  <ion-list *ngIf="inasistencias.length > 0">
+    <ion-list-header>
+      <ion-label>Inasistencias del Curso</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let inasistencia of inasistencias">
+      <ion-label>
+        <h2>Fecha: {{ inasistencia.fecha }}</h2>
+        <p>Motivo: {{ inasistencia.mensaje }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <p *ngIf="inasistencias.length === 0" class="no-data-message">No se encontraron inasistencias.</p>
+</ion-content>

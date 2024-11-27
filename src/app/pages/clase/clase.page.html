@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalle de la Clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="detalle-clase">
+  <!-- Información de la clase -->
+  <ion-card *ngIf="claseInfo" class="info-card">
+    <ion-card-header>
+      <ion-card-title>{{ claseInfo.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Fecha:</strong> {{ claseInfo.fecha | date: 'dd \'de\' MMMM, yyyy' }}</p>
+      <p><strong>Mensaje:</strong> {{ mensaje }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Total de asistentes -->
+  <ion-card *ngIf="totalAsistencias > 0" class="asistentes-card">
+    <ion-card-content>
+      <p><strong>Total de asistentes:</strong> {{ totalAsistencias }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de asistentes -->
+  <ion-card class="asistencia-card">
+    <ion-card-header>
+      <ion-card-title>Lista de Asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-list *ngIf="asistencia.length > 0">
+      <ion-item *ngFor="let estudiante of asistencia" class="asistencia-item">
+        <ion-label>
+          <p><strong>ID:</strong> {{ estudiante.id }}</p>
+          <p><strong>Hora:</strong> {{ estudiante.hora_asistencia }}</p>
+          <p><strong>Presente:</strong> {{ estudiante.presente }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <p *ngIf="asistencia.length === 0" class="no-asistencia">No se encontraron registros de asistencia.</p>
+  </ion-card>
+</ion-content>

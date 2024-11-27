@@ -14,10 +14,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'recuperar',
-    loadChildren: () => import('./pages/recuperar/recuperar.module').then( m => m.RecuperarPageModule)
-  },
-  {
     path: 'welcome',
     loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomePageModule),
     canActivate: [AuthGuard]
@@ -41,10 +37,7 @@ const routes: Routes = [
     path: 'detalle-est/:id',
     loadChildren: () => import('./pages/detalle-est/detalle-est.module').then( m => m.DetalleEstPageModule)
   },
-  {
-    path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
-  }
+
   
 
     

@@ -1,0 +1,123 @@
+/* Fondo fijo */
+#content {
+  background-image: url(../../../../assets/img/bg-app.jpg);
+  font-family: sans-serif;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Fondo fijo */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 3em;
+  padding-bottom: 60px;
+}
+
+/* Contenedor de las tarjetas desplazables */
+#scrollable-container {
+  flex: 1;
+  width: 100%;
+  max-height: calc(100vh - 140px); /* Altura máxima para no invadir botones */
+  overflow-y: auto; /* Desplazamiento vertical */
+  padding: 10px;
+}
+
+/* Estilo de las tarjetas */
+.custom-card {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.custom-card .row {
+  display: flex;
+  width: 100%;
+}
+
+.custom-card .col-img {
+  flex: 1;
+  max-width: 150px;
+}
+
+.custom-card .col-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.custom-card .col-content {
+  flex: 2;
+  padding: 16px;
+}
+
+.custom-card .card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-card .card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.custom-card .card-text {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.custom-card .user-info p {
+  margin: 0;
+  font-size: 0.85em;
+  color: #777;
+}
+
+.custom-card ion-button {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Botones fijos */
+.button-container {
+  position: fixed; /* Fijar botones en la parte inferior */
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #1a1a1a;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/* Imagen de perfil */
+.img-perfil {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 10px;
+  border: solid 3px #000;
+}
+
+/* Perfil */
+.perfil-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.perfil-info h3,
+.perfil-info p {
+  margin: 0;
+}

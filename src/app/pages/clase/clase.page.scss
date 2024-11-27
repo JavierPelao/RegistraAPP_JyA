@@ -1,0 +1,60 @@
+.detalle-clase {
+    --background: #f3f3f3;
+    font-family: 'Arial', sans-serif;
+    padding: 15px;
+  }
+  
+  .info-card,
+  .asistentes-card,
+  .asistencia-card {
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .info-card ion-card-header {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .info-card ion-card-title {
+    font-size: 1.2rem;
+  }
+  
+  .asistentes-card {
+    background-color: #ffe082;
+  }
+  
+  .asistencia-card {
+    background-color: #e3f2fd;
+  }
+  
+  .asistencia-item {
+    --background: #ffffff;
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .asistencia-item ion-label p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .no-asistencia {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  strong {
+    color: #333;
+  }
+  
