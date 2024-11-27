@@ -1,0 +1,64 @@
+<ion-content fullscreen="true">
+  <div id="content">
+    <!-- Menú de perfil -->
+    <ion-menu side="end" contentId="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <div class="perfil-container">
+            <img [src]="perfilData.img" alt="Imagen de perfil" class="img-perfil" *ngIf="perfilData.img">
+            <div class="perfil-info">
+              <h3>{{ perfilData?.data?.nombre_completo }}</h3>
+              <p>{{ perfilData?.data?.perfil }}</p>
+              
+            </div>
+          </div>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <!-- Opciones adicionales en el menú -->
+        <ion-list>
+          <ion-item (click)="cerrarSesion()">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Cerrar sesión</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <!-- Contenido principal -->
+    <div  id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Perfil</ion-title>
+          <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <!-- Mostrar los datos del perfil -->
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Datos del Usuario</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Nombre:</strong> {{ perfilData?.data?.nombre }}</p>
+          <p><strong>Apellido:</strong> {{ perfilData?.data?.apellido }}</p>
+          <p><strong>Correo:</strong> {{ perfilData?.data?.correo }}</p>
+          <p><strong>RUN:</strong> {{ perfilData?.data?.run }}</p>
+        </ion-card-content>
+
+        <ion-card-header>
+          <ion-card-title>Cambiar Contraseña</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="stacked">Nueva Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="nuevaContrasena" placeholder="Ingrese nueva contraseña"></ion-input>
+          </ion-item>
+          <ion-button expand="block" color="primary" (click)="cambiarContrasena()">Cambiar contraseña</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
