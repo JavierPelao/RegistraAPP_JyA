@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { AlertController } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
+import { Location } from '@angular/common';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalle',
@@ -17,24 +19,38 @@ export class DetallePage implements OnInit {
   qrData: string = '';
   showQRCode: boolean = false;
   codigoQR: string = ''; // Variable para almacenar el contenido del QR (código_web)
-
+  nombreCompleto: string = '';
+  perfil: string = '';
+  imgPerfil = '';
+  correoUsuario = '';
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
+    private alertController: AlertController,
+    private location: Location,
     private router: Router,
-    private alertController: AlertController
+    private menu: MenuController
   ) {}
 
   ngOnInit() {
-    const cursoId = this.route.snapshot.paramMap.get('id');
-    console.log('ID del curso en DetallePage:', cursoId);
-    if (cursoId) {
-      this.cargarDetalleCurso(cursoId);
-      this.cargarAnunciosDelCurso(cursoId);
-      this.cargarInasistenciasDelCurso(cursoId);
-      this.cargarClasesDelCurso(cursoId);
+    // Recuperar datos del curso y usuario desde el estado de navegación
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras?.state) {
+      const state = navigation.extras.state as any;
+      this.curso = state.curso; // Datos del curso
+      this.nombreCompleto = state.userInfo?.nombreCompleto || 'Usuario';
+      this.perfil = state.userInfo?.perfil || 'Perfil no definido';
+      this.imgPerfil = state.userInfo?.imgPerfil || '';
+    }
+  
+    // Si el curso tiene un ID, cargar detalles del curso
+    if (this.curso?.id) {
+      this.cargarDetalleCurso(this.curso.id);
+      this.cargarAnunciosDelCurso(this.curso.id);
+      this.cargarClasesDelCurso(this.curso.id);
     }
   }
+  
 
   async cargarDetalleCurso(id: string) {
     try {
@@ -79,20 +95,6 @@ export class DetallePage implements OnInit {
       );
     } catch (error) {
       console.error('Error al solicitar las clases del curso:', error);
-    }
-  }
-
-  async cargarInasistenciasDelCurso(cursoId: string) {
-    try {
-      const inasistenciasObservable = await this.authService.getInasistenciasPorCursoId(cursoId);
-      const inasistencias = await firstValueFrom(inasistenciasObservable);
-      this.inasistencias = inasistencias && inasistencias.length > 0 ? inasistencias : [];
-      console.log(
-        this.inasistencias.length > 0 ? 'Inasistencias cargadas:' : 'No se encontraron inasistencias.',
-        this.inasistencias
-      );
-    } catch (error) {
-      console.error('Error al cargar las inasistencias del curso:', error);
     }
   }
 
@@ -252,5 +254,35 @@ export class DetallePage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  regresar() {
+    this.location.back();
+  }
+
+  openMenu() {
+    this.menu.open();
+  }
+  closeMenu() {
+    this.menu.close();
+  }
+  
+
+  irACambiarContrasena() {
+    this.router.navigate(['/profile'], {
+      state: {
+        userData: {
+          nombreCompleto: this.nombreCompleto,
+          perfil: this.perfil,
+          correoUsuario: this.correoUsuario,
+          imgPerfil: this.imgPerfil,
+        },
+      },
+    });
+  }
+  cerrarSesion() {
+    if (confirm('¿Desea cerrar sesión?')) {
+      this.router.navigate(['/login']);
+    }
   }
 }

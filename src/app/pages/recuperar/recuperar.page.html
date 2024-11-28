@@ -1,11 +1,13 @@
 <ion-content [fullscreen]="true">
   <div id="content">
+    <!-- Tarjeta contenedora -->
     <ion-card id="container-home-cont">
       <ion-card-header>
         <ion-card-title>Recuperación de Contraseña</ion-card-title>
       </ion-card-header>
 
-
+      <!-- Campo para ingresar el correo -->
+      <ion-item>
         <ion-input
           [counter]="true"
           label="Correo Electrónico"
@@ -16,8 +18,9 @@
           minlength="5"
           [(ngModel)]="correo">
         </ion-input>
+      </ion-item>
 
-
+      <!-- Botón para recuperar contraseña -->
       <ion-button expand="block" id="btn-recuperar" (click)="recuperarPassword()">
         Recuperar
       </ion-button>

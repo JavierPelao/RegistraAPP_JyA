@@ -1,0 +1,57 @@
+/* Fondo fijo */
+#background {
+    background-image: url(../../../../assets/img/bg-app.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  
+  /* Contenedor centrado */
+  .container {
+    background: rgba(255, 255, 255, 0);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Estilo del menú */
+  .perfil-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 16px;
+  }
+  
+  .img-perfil {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #007bff;
+  }
+  
+  .perfil-info h3 {
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .perfil-info p {
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  /* Tarjetas */
+  .info-card {
+    margin-bottom: 16px;
+  }
+  

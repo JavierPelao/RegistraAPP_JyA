@@ -20,7 +20,6 @@ export class WelcomealumPage implements OnInit {
   imgPerfil: string = '';
   cursoID: string = '';
   scannedData: any;
-  result: string = ''; // Declarada para la plantilla
 
   constructor(
     private authService: AuthService,
@@ -32,43 +31,54 @@ export class WelcomealumPage implements OnInit {
     try {
       const token = await this.authService.getToken();
       console.log('Token de autenticación:', token);
-
+  
       const userInfo = await this.authService.getUserInfo();
       userInfo.subscribe(
         async (response: any) => {
-          this.nombreCompleto = response.data.nombre_completo;
-          this.perfil = response.data.perfil;
-          this.correoUsuario = response.data.correo;
-          this.imgPerfil = response.data.img;
-          this.nombre = response.data.nombre;
-
-          if (this.correoUsuario) {
+          console.log('Información del usuario:', response);
+  
+          this.nombreCompleto = response.data.nombre_completo || 'No definido';
+          this.perfil = response.data.perfil || 'No definido';
+          this.nombre = response.data.nombre || 'No definido';
+          this.imgPerfil = response.data.img || '';
+  
+          console.log('Nombre completo:', this.nombreCompleto);
+          console.log('Perfil:', this.perfil);
+          console.log('Nombre:', this.nombre);
+  
+          if (response.data.correo) {
+            this.correoUsuario = response.data.correo;
             await this.getCursosInscritos();
+          } else {
+            console.error('El correo no está disponible.');
           }
         },
-        (error: any) => console.error('Error al obtener la información del usuario:', error)
+        (error: any) => {
+          console.error('Error al obtener información del usuario:', error);
+        }
       );
     } catch (error) {
-      console.error('Error en el proceso de autenticación o carga de cursos:', error);
+      console.error('Error en el proceso de autenticación o carga de datos:', error);
     }
   }
+  
 
   async getCursosInscritos() {
     try {
       const response = await this.authService.getCursosInscritosEstudiante();
-      console.log('Cursos inscritos obtenidos:', response);
-
-      if (response && response['cursos']) {
-        this.cursos = response['cursos'];
+      console.log('Cursos inscritos:', response);
+  
+      if (response && response.cursos) {
+        this.cursos = response.cursos;
+        console.log('Lista de cursos:', this.cursos);
       } else {
-        console.error('La respuesta no contiene la propiedad cursos');
-        this.cursos = [];
+        console.error('No hay cursos disponibles.');
       }
     } catch (error) {
       console.error('Error al obtener los cursos inscritos:', error);
-      this.cursos = [];
     }
   }
+  
 
   cerrarSesion() {
     if (confirm('¿Desea cerrar sesión?')) {
@@ -77,12 +87,10 @@ export class WelcomealumPage implements OnInit {
   }
 
   irACambiarContrasena() {
-    // Navega a la página de cambio de contraseña
     this.router.navigate(['/profile']);
   }
 
   verDetallesCurso(curso: any) {
-    // Navega a los detalles del curso pasando el ID del curso
     console.log('ID del curso seleccionado:', curso.id);
     this.router.navigate(['/detalle-est', curso.id], { state: { curso: curso } });
   }
@@ -131,14 +139,15 @@ export class WelcomealumPage implements OnInit {
 
   async matricularEnCurso(courseCode: string) {
     try {
-      (await this.authService.registrarAsistencia(courseCode)).subscribe(
+      const observable = await this.authService.registrarAsistencia(courseCode);
+      observable.subscribe(
         (response) => {
-          console.log('Enrolled successfully:', response);
-          this.showScanResult('Enrolled successfully in course: ' + courseCode);
+          console.log('Matrícula exitosa:', response);
+          this.showScanResult('Matrícula exitosa en el curso: ' + courseCode);
         },
         (error) => {
-          console.error('Error enrolling in course:', error);
-          this.showScanResult('Failed to enroll in course: ' + courseCode);
+          console.error('Error al matricularse en el curso:', error);
+          this.showScanResult('Error al matricularse en el curso: ' + courseCode);
         }
       );
     } catch (error) {

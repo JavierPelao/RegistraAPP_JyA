@@ -1,7 +1,101 @@
+/* Fondo fijo */
+#background {
+  background-image: url(../../../../assets/img/bg-app.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Contenedor */
+.container {
+  margin: auto;
+  max-width: 800px; /* Ajusta el ancho */
+  background-color: rgba(255, 255, 255, 0); /* Fondo blanco translúcido */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  max-height: calc(100vh - 70px); /* Respetar toolbar */
+  overflow-y: auto;
+}
+
+/* Sección del QR */
+.qr-container {
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* Estilo del menú */
+.perfil-container {
+  text-align: center;
+  padding: 16px;
+}
+
+.img-perfil {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+}
+
+.perfil-info h3 {
+  margin: 8px 0 4px;
+  font-size: 1.2em;
+}
+
+.perfil-info p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+/* Contenedor de la tabla */
+.container-grid {
+  background: rgba(255, 255, 255, 0.9); /* Fondo blanco translúcido */
+  border-radius: 12px; /* Bordes redondeados */
+  padding: 16px; /* Espaciado interno */
+  margin: 16px; /* Separación respecto al resto */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo de la fila de encabezado */
+.header-row {
+  background-color: #007bff; /* Azul */
+  color: #fff; /* Texto blanco */
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* Estilo de las filas de datos */
+.data-row {
+  border-bottom: 1px solid #ddd; /* Línea divisoria */
+  padding: 8px 0;
+}
+
+/* Alinear el texto de los botones */
 .text-center {
-    text-align: center;
-  }
-  
-  ion-button {
-    font-size: 14px; // Ajusta el tamaño de la fuente si es necesario
-  }
+  text-align: center;
+}
+
+/* Estilo de los botones */
+ion-button {
+  font-size: 14px;
+  border-radius: 8px;
+  margin: 4px 0; /* Espaciado vertical entre botones */
+}
+
+ion-button[color="primary"] {
+  background-color: #007bff;
+  color: #fff;
+}
+
+ion-button[color="secondary"] {
+  border-color: #007bff;
+  color: #007bff;
+}

@@ -1,85 +1,111 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Detalle del Curso</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <!-- Información del curso -->
-  <ion-card *ngIf="curso">
-    <ion-card-header>
-      <img [src]="curso.imagen" alt="Imagen del curso" />
-      <ion-card-title>{{ curso.nombre }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>{{ curso.descripcion }}</p>
-      <div class="user-info">
-        <p><strong>Profesor:</strong> {{ curso.usuario?.nombre_completo }}</p>
-        <p><strong>Correo:</strong> {{ curso.usuario?.correo }}</p>
+<ion-menu side="end" contentId="main-content" swipeGesture="true">
+  <ion-header>
+    <ion-toolbar>
+      <div class="perfil-container">
+        <img [src]="imgPerfil" alt="Imagen de perfil" class="img-perfil" *ngIf="imgPerfil">
+        <div class="perfil-info">
+          <h3>{{ nombreCompleto || 'Usuario' }}</h3>
+          <p>{{ perfil || 'Perfil no definido' }}</p>
+        </div>
       </div>
-    </ion-card-content>
-  </ion-card>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item (click)="irACambiarContrasena()">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-item>
+      <ion-item (click)="cerrarSesion()" class="danger-item">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-  <!-- Botón para crear una nueva clase -->
-  <ion-button expand="block" color="success" (click)="crearClase(curso.id)">Nueva clase</ion-button>
+<ion-content [fullscreen]="true" id="main-content">
 
-  <!-- Botón para crear un nuevo anuncio -->
-  <ion-button expand="block" color="primary" (click)="crearAnuncio(curso.id)">Nuevo anuncio</ion-button>
+  <div id="background"></div>
+  
+    <ion-header [translucent]="true">
+      <ion-toolbar>
+        <!-- Botón de regreso -->
+        <ion-buttons slot="start">
+          <ion-button (click)="regresar()">
+            <ion-icon name="arrow-back-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <!-- Título -->
+        <ion-title>Detalle del Curso</ion-title>
+        <!-- Botón de menú -->
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <div class="container">
+    <!-- Información del curso -->
+    <ion-card *ngIf="curso" class="info-card">
+      <ion-card-header>
+        <img [src]="curso.imagen" alt="Imagen del curso" />
+        <ion-card-title>{{ curso.nombre }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ curso.descripcion }}</p>
+        <div class="user-info">
+          <p><strong>Profesor:</strong> {{ curso.usuario?.nombre_completo }}</p>
+          <p><strong>Correo:</strong> {{ curso.usuario?.correo }}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
 
-  <!-- Tabla de registro de clases -->
-  <ion-grid *ngIf="clases.length > 0">
-    <ion-row>
-      <ion-col size="3">Día</ion-col>
-      <ion-col size="5">Fecha</ion-col>
-      <ion-col size="4">Acciones</ion-col>
-    </ion-row>
+    <!-- Botones principales -->
+    <ion-button expand="block" color="success" (click)="crearClase(curso.id)">Nueva clase</ion-button>
+    <ion-button expand="block" color="primary" (click)="crearAnuncio(curso.id)">Nuevo anuncio</ion-button>
 
-    <ion-row *ngFor="let clase of clases; let i = index">
-      <ion-col size="3" class="text-center">{{ obtenerDiaSemana(clase.fecha) }}</ion-col>
-      <ion-col size="5" class="text-center">{{ clase.fecha | date: 'dd \'de\' MMMM, yyyy' }}</ion-col>
-      <ion-col size="4" class="text-center">
-        <ion-button expand="block" fill="solid" color="primary" (click)="verDetallesClase(curso.id, clase)">
-          Ver Detalles
-        </ion-button>
-        <ion-button expand="block" fill="outline" color="secondary" (click)="mostrarQRCode(clase.codigo_web)">
-          Generar QR
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <!-- Tabla de registro de clases -->
+    <ion-grid *ngIf="clases.length > 0" class="container-grid">
+      <ion-row class="header-row">
+        <ion-col size="3">Día</ion-col>
+        <ion-col size="5">Fecha</ion-col>
+        <ion-col size="4">Acciones</ion-col>
+      </ion-row>
+    
+      <ion-row *ngFor="let clase of clases" class="data-row">
+        <ion-col size="3" class="text-center">{{ obtenerDiaSemana(clase.fecha) }}</ion-col>
+        <ion-col size="5" class="text-center">{{ clase.fecha | date: 'dd \'de\' MMMM, yyyy' }}</ion-col>
+        <ion-col size="4" class="text-center">
+          <ion-button expand="block" fill="solid" color="primary" (click)="verDetallesClase(curso.id, clase)">
+            Ver Detalles
+          </ion-button>
+          <ion-button expand="block" fill="outline" color="secondary" (click)="mostrarQRCode(clase.codigo_web)">
+            Generar QR
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <p *ngIf="clases.length === 0">No se encontraron clases para este curso.</p>
 
-  <p *ngIf="clases.length === 0">No se encontraron clases para este curso.</p>
+    <!-- Sección de QR Code -->
+    <div *ngIf="showQRCode" class="qr-container">
+      <qrcode [qrdata]="codigoQR" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+      <ion-button color="danger" (click)="cerrarQRCode()">Cerrar QR</ion-button>
+    </div>
 
-  <!-- QR Code Section -->
-  <div *ngIf="showQRCode" class="qr-container">
-    <qrcode [qrdata]="codigoQR" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-    <ion-button color="danger" (click)="cerrarQRCode()">Cerrar QR</ion-button>
+    <!-- Lista de anuncios -->
+    <ion-list *ngIf="anuncios.length > 0">
+      <ion-list-header>
+        <ion-label>Anuncios del Curso</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let anuncio of anuncios">
+        <ion-label>
+          <h2>{{ anuncio.titulo }}</h2>
+          <p>{{ anuncio.mensaje }}</p>
+        </ion-label>
+        <ion-button slot="end" color="tertiary" (click)="verDetallesAnuncio(anuncio)">Ver</ion-button>
+      </ion-item>
+    </ion-list>
   </div>
-
-  <!-- Lista de anuncios del curso -->
-  <ion-list *ngIf="anuncios.length > 0">
-    <ion-list-header>
-      <ion-label>Anuncios del Curso</ion-label>
-    </ion-list-header>
-    <ion-item *ngFor="let anuncio of anuncios">
-      <ion-label>
-        <h2>{{ anuncio.titulo }}</h2>
-        <p>{{ anuncio.mensaje }}</p>
-      </ion-label>
-      <ion-button slot="end" color="tertiary" (click)="verDetallesAnuncio(anuncio)">Ver</ion-button>
-    </ion-item>
-  </ion-list>
-
-  <ion-list *ngIf="inasistencias.length > 0">
-    <ion-list-header>
-      <ion-label>Inasistencias del Curso</ion-label>
-    </ion-list-header>
-    <ion-item *ngFor="let inasistencia of inasistencias">
-      <ion-label>
-        <h2>Fecha: {{ inasistencia.fecha }}</h2>
-        <p>Motivo: {{ inasistencia.mensaje }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-  <p *ngIf="inasistencias.length === 0" class="no-data-message">No se encontraron inasistencias.</p>
 </ion-content>

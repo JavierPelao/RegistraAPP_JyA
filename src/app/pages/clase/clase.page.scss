@@ -1,60 +1,57 @@
-.detalle-clase {
-    --background: #f3f3f3;
-    font-family: 'Arial', sans-serif;
-    padding: 15px;
-  }
-  
-  .info-card,
-  .asistentes-card,
-  .asistencia-card {
-    margin: 15px 0;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
-  
-  .info-card ion-card-header {
-    background-color: #4caf50;
-    color: #fff;
-  }
-  
-  .info-card ion-card-title {
-    font-size: 1.2rem;
-  }
-  
-  .asistentes-card {
-    background-color: #ffe082;
-  }
-  
-  .asistencia-card {
-    background-color: #e3f2fd;
-  }
-  
-  .asistencia-item {
-    --background: #ffffff;
-    border-bottom: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .asistencia-item ion-label p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-    color: #333;
-  }
-  
-  .no-asistencia {
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
-    margin-top: 10px;
-  }
-  
-  p {
-    margin: 0;
-    line-height: 1.5;
-  }
-  
-  strong {
-    color: #333;
-  }
-  
+/* Fondo de la página */
+#content {
+  background-image: url(../../../../assets/img/bg-app.jpg);
+  font-family: sans-serif;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Fondo fijo */
+}
+
+/* Estilos del menú */
+.perfil-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.img-perfil {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007bff;
+}
+
+.perfil-info h3 {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.perfil-info p {
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Estilo de las tarjetas */
+.info-card,
+.asistentes-card,
+.asistencia-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  padding: 16px;
+}
+
+.info-card ion-card-title {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.asistencia-item {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 16px;
+}

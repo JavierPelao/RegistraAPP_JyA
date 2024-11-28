@@ -7,8 +7,8 @@
           <div class="perfil-container">
             <img [src]="imgPerfil" alt="Imagen de perfil" class="img-perfil" *ngIf="imgPerfil">
             <div class="perfil-info">
-              <h3>{{ nombreCompleto }}</h3>
-              <p>{{ perfil }}</p>
+              <h3>{{ nombreCompleto || 'Usuario' }}</h3>
+              <p>{{ perfil || 'Perfil no definido' }}</p>
             </div>
           </div>
         </ion-toolbar>
@@ -31,7 +31,7 @@
     <div class="ion-page" id="main-content">
       <ion-header>
         <ion-toolbar>
-          <ion-title>Bienvenido, {{ nombre }}</ion-title>
+          <ion-title>Bienvenido, {{ nombre || 'Invitado' }}</ion-title>
           <ion-buttons slot="end">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
@@ -49,19 +49,17 @@
       <ion-card *ngFor="let curso of cursos" class="custom-card">
         <div class="row">
           <div class="col-img">
-            <img [src]="curso.imagen" alt="Imagen del curso" class="img-fluid rounded-start" />
+            <img [src]="curso.imagen || 'assets/img/default-course.png'" alt="Imagen del curso" />
           </div>
           <div class="col-content">
             <div class="card-body">
-              <h5 class="card-title">{{ curso.nombre }}</h5>
-              <p class="card-text">{{ curso.descripcion }}</p>
+              <h5 class="card-title">{{ curso.nombre || 'Sin nombre' }}</h5>
+              <p class="card-text">{{ curso.descripcion || 'Sin descripción' }}</p>
               <div class="user-info">
-                <p><strong>Profesor:</strong> {{ curso.usuario.nombre_completo }}</p>
-                <p><strong>Correo:</strong> {{ curso.usuario.correo }}</p>
+                <p><strong>Profesor:</strong> {{ curso.usuario?.nombre_completo || 'No definido' }}</p>
+                <p><strong>Correo:</strong> {{ curso.usuario?.correo || 'No definido' }}</p>
               </div>
-              <ion-button expand="block" (click)="verDetallesCurso(curso)">
-                Ver más
-              </ion-button>
+              <ion-button expand="block" (click)="verDetallesCurso(curso)">Ver más</ion-button>
             </div>
           </div>
         </div>
