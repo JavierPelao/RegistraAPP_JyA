@@ -82,10 +82,11 @@ Instalaciones necesarias:
    - Herramientas adicionales según el perfil.
 
 
-   Imágenes:
+   Imágene:
    ![Página de Detalle](assets/Readme-photo/detalle-doc-1.png)
 
 
+   Imágene:
    ![Página de Detalle](assets/Readme-photo/detalle-doc-2.png)
 
 
