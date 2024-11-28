@@ -38,45 +38,86 @@ Instalaciones necesarias:
    Redirige según el perfil del usuario:
    - Estudiante: Página welcomealum.
    - Docente: Página welcome.
-   Imagen:![Página de Login](assets/Readme-photo/home.png)
+
+
+   Imagen:
+   ![Página de Login](assets/Readme-photo/home.png)
+
+
 
 2. Welcome (Estudiante)
    Aquí los estudiantes pueden:
    - Ver los cursos en los que están inscritos.
    - Acceder al detalle de cada curso y las clases asociadas.
-   Imagen:![Página de Home](assets/Readme-photo/welcome-est.png)
+
+
+   Imagen:
+   ![Página de Home](assets/Readme-photo/welcome-est.png)
+
+
 
 3. Welcome (Docente)
    Página similar a la de los estudiantes, pero con herramientas adicionales para gestionar cursos y clases.
-   Imagen:![Página de Home](assets/Readme-photo/welcome-doc.png)
+
+
+   Imagen:
+   ![Página de Home](assets/Readme-photo/welcome-doc.png)
+
+
 
 4. Detalle de Curso (Estudiante)
    Muestra información detallada del curso seleccionado:
    - Descripción.
-   Imagen:![Página de Detalle](assets/Readme-photo/detalle-est-curso.png)
+
+
+   Imagen:
+   ![Página de Detalle](assets/Readme-photo/detalle-est-curso.png)
+
+
 
 5. Detalle de Curso (Docente)
    Muestra información detallada del curso seleccionado:
    - Descripción.
    - Listado de clases.
    - Herramientas adicionales según el perfil.
+
+
    Imágenes:
    ![Página de Detalle](assets/Readme-photo/detalle-doc-1.png)
+
+
    ![Página de Detalle](assets/Readme-photo/detalle-doc-2.png)
+
+
 
 6. Detalle de Clase (DOCENTE-ESTUDIANTE)
    Detalla los contenidos y actividades de una clase específica dentro de un curso.
-   Imagen:![Página de Detalle-Clase](assets/Readme-photo/asistencia%20-doc.png)
+
+
+   Imagen:
+   ![Página de Detalle-Clase](assets/Readme-photo/asistencia%20-doc.png)
+
+
 
 7. Recuperar Contraseña
    Página para recuperar la contraseña en caso de olvido, solicitando el correo registrado.
-   Imagen:![Página de Recuperar](assets/Readme-photo/recuperar.png)
+
+
+   Imagen:
+   ![Página de Recuperar](assets/Readme-photo/recuperar.png)
+
+
 
 8. Perfil (DOCENTE-ESTUDIANTE)
    Página donde los usuarios pueden:
    - Ver y editar su información personal.
    - Cambiar su contraseña.
-   Imagen:![Página de Perfil ](assets/Readme-photo/perfil.png)
+
+
+   Imagen:
+   ![Página de Perfil ](assets/Readme-photo/perfil.png)
+
+
 
 📚 Dependencias principales utilizadas
 - Ionic Framework: Estructura y diseño de la aplicación.
