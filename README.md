@@ -19,8 +19,8 @@ Instalaciones necesarias:
 
 🚀 Cómo ejecutar la aplicación
 1. Clona el repositorio de la aplicación:
-   git clone https://github.com/FrancesscoRipeti/Prueba-Programacion-Web.git
-   cd Prueba-Programacion-Web
+   git clone https://github.com/JavierPelao/RegistraAPP_JyA
+   cd RegistraAPP_JyA
 
 2. Instala las dependencias:
    npm install
