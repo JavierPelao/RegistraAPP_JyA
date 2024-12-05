@@ -85,9 +85,9 @@ export class AuthService {
   }
 
   // Registrar asistencia
-  async registrarAsistencia(courseCode: string): Promise<Observable<any>> {
-    const headers = await this.getAuthHeaders();
-    const url = `${this.apiUrl}/clases/${courseCode}/asistencia`;
+  async registrarAsistencia(codigo_web: string): Promise<Observable<any>> {
+    const headers = await this.getAuthHeaders(); // Obtén los headers de autorización
+    const url = `${this.apiUrl}/clases/${codigo_web}/asistencia`; // Construye la URL
     return this.http.post(url, {}, { headers }).pipe(
       catchError((error) => {
         console.error('Error al registrar asistencia:', error);
@@ -95,6 +95,7 @@ export class AuthService {
       })
     );
   }
+  
 
   // Crear curso
   async crearCurso(data: any): Promise<Observable<any>> {
@@ -185,7 +186,7 @@ export class AuthService {
   // Recuperar contraseña
   recuperarPassword(correo: string): Observable<any> {
     const body = { correo };
-    return this.http.post(`${this.apiUrl}/recuperar`, body).pipe(
+    return this.http.post(`${this.apiUrl}/auth/recuperar`, body).pipe(
       catchError((error) => {
         console.error('Error al recuperar contraseña:', error);
         return throwError(() => new Error('Failed to recover password'));

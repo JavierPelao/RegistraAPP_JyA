@@ -38,8 +38,12 @@
     </div>
 
     <div class="button-fixed">
-      <ion-button expand="block" (click)="scanQRCode()">Escanear QR</ion-button>
-      <ion-button expand="block" (click)="mostrarInputCodigoCurso()">Inscribirse en curso por código</ion-button>
+      <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+        <ion-fab-button (click)="scan()">
+          <ion-icon name="qr-code-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      
     </div>
 
     <div id="scrollable-container">
